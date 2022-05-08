@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-final public class Project {
+final public class Product {
 
     private final String name;
     private final int price;
@@ -15,7 +15,7 @@ final public class Project {
         DYI;
     }
 
-    Project(String name, int price, List<Category> Category, String description) {
+    Product(String name, int price, List<Category> Category, String description) {
         this.name = name;
         this.price = price;
         this.Category = new ArrayList<>(Category);
