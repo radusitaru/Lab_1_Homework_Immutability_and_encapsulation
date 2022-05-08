@@ -41,7 +41,7 @@ final public class Shop {
     boolean isLeftInStock(Product product, int quantityBought) {
         //2.2.1 Check if productList is not empty and if product name exists in list
         if (productInventory.size() != 0 && productNameExists(product.getName())) {
-            if (productInventory.get(product) - quantityBought > 0) {
+            if (productInventory.get(product) - quantityBought > -1) {
                 return true;
             } else {
                 System.out.println("Product out of stock");
