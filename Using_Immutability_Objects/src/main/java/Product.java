@@ -4,25 +4,43 @@ import java.util.List;
 final public class Product {
 
 
-    private final String name;
+    /**
+     * 1. Class members
+     */
+
+    //1.1 Primitive variables
     private final int price;
-    private final List<category> categoriesList;
+
+    //1.2 Reference variables
+    private final String name;
     private final String description;
 
+    //1.3 Lists
+    private final List<category> categoryList;
+
+    //1.4 Enums
     enum category {
         Electronics,
         Clothes,
         Food,
-        DYI;
+        DYI
     }
 
-    Product(String name, int price, List<category> categoriesList, String description) {
+    //1.5 Constructors
+    Product(String name, int price, List<category> categoryList, String description) {
         this.name = name;
         this.price = price;
-        this.categoriesList = new ArrayList<>(categoriesList);
+        this.categoryList = new ArrayList<>(categoryList);
         this.description = description;
     }
 
+
+
+    /**
+     * 2. Methods
+     */
+
+    //2.1 Getter and setters
     public String getName() {
         return name;
     }
@@ -31,21 +49,22 @@ final public class Product {
         return price;
     }
 
-    public List<category> getCategoriesList() {
-        return new ArrayList<>(categoriesList);
-    }
-
     public String getDescription() {
         return description;
     }
 
+    public List<category> getCategoryList() {
+        return new ArrayList<>(categoryList);
+    }
 
+
+    //2.2 toStrings
     @Override
     public String toString() {
         return "Project{" +
                 "name='" + name + '\'' +
                 ", price=" + price +
-                ", Category=" + categoriesList +
+                ", Category=" + categoryList +
                 ", description='" + description + '\'' +
                 '}';
     }
