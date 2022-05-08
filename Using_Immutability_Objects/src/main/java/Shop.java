@@ -79,9 +79,9 @@ final public class Shop {
     void showShopInventory() {
         int counter = 1;
         if (productInventory.size() == 0) System.out.println("Empty shop");
-        for (Product i:productInventory.keySet()) {
+        for (Product i : productInventory.keySet()) {
             System.out.println("---------------" + "Product #:" + (counter) + "---------------------");
-            System.out.println("---------------" + "inventory: "+ productInventory);
+            System.out.println("---------------" + "inventory: " + productInventory);
             System.out.println("-----------------------------------------------");
             counter++;
         }
@@ -95,50 +95,75 @@ final public class Shop {
         int command = 4;
         while (command != 0) {
             switch (command) {
+
+                //2.6.1 Add new product
                 case 1 -> {
 
-                    boolean productExists=true;
-                    String name="";
+                    boolean productExists = true;
+                    String name = "";
 
-                    //2.6.1 Make sure product doesn't exist under this name
-                    while(productExists) {
+                    //2.6.1.1 Make sure product doesn't exist under this name
+                    while (productExists) {
                         System.out.println("Insert name");
                         name = sc2.nextLine();
                         if (productNameExists(name)) {
                             System.out.println("Product already exists under this name, try again");
-                        }
-                        else productExists=false;
+                        } else productExists = false;
                     }
 
-
+                    //2.6.1.2 Insert rest of variables
                     System.out.println("Insert product price");
                     int price = sc.nextInt();
+
                     System.out.println("Insert description of product");
                     String description = sc2.nextLine();
+
                     System.out.println("Insert product count");
                     int productCount = sc.nextInt();
+
                     System.out.println("Select category");
                     selectCategory();
+
+                    //2.6.1.3 Create product based on user input
                     Product product = new Product(name, price, categoriesList, description);
+
+                    //2.6.1.4 Add product to list
                     addProduct(product, productCount);
                 }
+
+                //2.6.2 Buy product
                 case 2 -> {
+
+                    //2.6.2.1 User input
+
                     System.out.println("Insert product name to buy it");
                     String productName = sc2.nextLine();
+
                     System.out.println("Insert quantity you want to buy");
                     int productQuantity = sc.nextInt();
+
+                    //2.6.2.2 If product exists in shop, proceed to buy
                     if (checkIfProductMatches(productName)) {
                         buyProduct(boughtProduct, productQuantity);
                     }
                 }
+
+                //2.6.3 Show shop inventory
                 case 3 -> showShopInventory();
+
+                //2.6.4 Show menu
                 case 4 -> showMenu();
+
                 default -> {
                 }
             }
+
+            //2.6.5 User input for next command
             try {
                 command = sc3.nextInt();
+
             } catch (Exception e) {
+                //2.6.5.1 Catch error
                 System.out.println("Wrong command input");
             }
         }
@@ -270,6 +295,8 @@ final public class Shop {
 
     //2.10 Check if category is inserted correctly
     boolean checkCategoryInput(String category) {
+
+        //2.10.1 If product category doesn't match any of standard ones, wrong category input
         if (!category.equals("Electronics")
                 &&
                 !category.equals("Clothes")
@@ -286,6 +313,7 @@ final public class Shop {
         }
     }
 
+    //2.11 Check if product name exists in shop
     boolean checkIfProductMatches(String productName) {
         boolean foundProduct = false;
         for (Product i : productInventory.keySet()) {
