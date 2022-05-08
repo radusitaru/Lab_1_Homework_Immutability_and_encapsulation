@@ -19,11 +19,7 @@ public class Main {
         System.out.println(product.getDescription());
         System.out.println(product.getClass());
 
-        categoryArrayList.set(1,)
-
-
-
-        //No getter, no setter method, object is immutable & encapsulated.
+        //Am adaugat getter si setter
 
     }
 }
